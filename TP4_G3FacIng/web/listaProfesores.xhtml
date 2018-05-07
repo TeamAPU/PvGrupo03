@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>TP4 Grupo 3 08</title>
+    </h:head>
+    <body>
+        <p:panel id="pnl" header="Registro Profesores">
+            <h:form>
+                <p:dataTable id="dtable" value="#{profesoresBean.profesores}" var="pro">
+                    <p:column headerText="Nombre">
+                        <p:outputLabel value="#{pro.nombre}"/>
+                    </p:column>
+                    <p:column headerText="Apellido">
+                        <p:outputLabel value="#{pro.apellido}"/>
+                    </p:column>
+                    <p:column headerText="Legajo">
+                        <p:outputLabel value="#{pro.legajo}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </p:panel>
+    </body>
+          
+</html>
+
