@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registro Libros</title>
+    </h:head>
+    <h:body>
+        <p:panel id="pnlRegistroLibro" header="Carga de Libros">
+            <h:form>
+                <h:panelGrid id="tblLibros" columns="2">   
+                    <p:outputLabel id="lblISBN" value="ISBN"/>
+                    <p:inputText id="txtISBN" value="#{libroFormBean.libro.ISBN}" />
+                    <p:outputLabel id="lblLibro" value="Titulo"/>
+                    <p:inputText id="txtTitulo" value="#{libroFormBean.libro.titulo}" />
+                    <p:outputLabel id="lblAutor" value="Autor"/>
+
+                    <p:selectOneMenu value="#{libroFormBean.libro.autor}">
+                        <f:selectItem itemLabel="George RR Martin" itemValue="George RR Martin"/>
+                        <f:selectItem itemLabel="J. R. R. Tolkien" itemValue="J. R. R. Tolkien"/>
+                        <f:selectItem itemLabel="Nagaru Tanigawa" itemValue="Nagaru Tanigawa"/> 
+                    </p:selectOneMenu>
+                    <p:outputLabel id="lblPrecio" value="Precio"/>
+                    <p:inputText id="txtPrecio" value="#{libroFormBean.libro.precio}"/>
+                    <p:commandButton id="btnRegistrar" value="Registrar"
+                                     actionListener="#{libroFormBean.agregar()}"
+                                     update=":frmCargaLibro"/>
+                </h:panelGrid>
+            </h:form>
+
+            <h:form id="frmCargaLibro">
+                <p:dataTable id="tblLibros" value="#{libroFormBean.libros}"
+                             var="li">
+                    <p:column headerText="ISBN">
+                        <p:outputLabel value="#{li.ISBN}"/>
+                    </p:column>
+                    <p:column headerText="Titulo">
+                        <p:outputLabel value="#{li.titulo}"/>
+                    </p:column>
+                    <p:column headerText="Autor">
+                        <p:outputLabel value="#{li.autor}"/>
+                    </p:column>
+                    <p:column headerText="Precio">
+                        <p:outputLabel value="#{li.precio}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+
+            <h:form>
+
+                <h:panelGrid id="buscarLibro" columns="3">
+                    <p:outputLabel id="lblAutor" value="Autor"/>
+
+                    <p:selectOneMenu value="#{libroFormBean.buscar.buscar}">
+                        <f:selectItem itemLabel="George RR Martin" itemValue="George RR Martin"/>
+                        <f:selectItem itemLabel="J. R. R. Tolkien" itemValue="J. R. R. Tolkien"/>
+                        <f:selectItem itemLabel="Nagaru Tanigawa" itemValue="Nagaru Tanigawa"/> 
+                    </p:selectOneMenu>                   
+                    <p:commandButton id="btnBuscar" value="Buscar"
+                                     actionListener="#{libroFormBean.buscar()}"
+                                     update=":frmBusqueda"/>
+
+                </h:panelGrid>
+            </h:form>
+            <h:form id="frmBusqueda">   
+                <p:dataTable id="tblBuscarLibros" value="#{libroFormBean.busqueda}"
+                             var="bu">
+                    <p:column headerText="ISBN">
+                        <p:outputLabel value="#{bu.ISBN}"/>
+                    </p:column>
+                    <p:column headerText="Titulo">
+                        <p:outputLabel value="#{bu.titulo}"/>
+                    </p:column>
+                    <p:column headerText="Autor">
+                        <p:outputLabel value="#{bu.autor}"/>
+                    </p:column>
+                    <p:column headerText="Precio">
+                        <p:outputLabel value="#{bu.precio}"/>
+                    </p:column>
+                </p:dataTable>
+
+
+            </h:form>
+        </p:panel>
+
+    </h:body>
+</html>
+
