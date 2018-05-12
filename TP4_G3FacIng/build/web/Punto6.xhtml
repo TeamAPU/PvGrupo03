@@ -10,11 +10,6 @@
     </h:head>
     <h:body>
         <p:panel>
-            <h:form>
-                #{autoFormBean.cargarAutos()}        
-               #{autoFormBean.cargarPatente()}
-                
-            </h:form>
             
             <h:form id="frmCargaAuto">
                 
@@ -35,25 +30,17 @@
                     <p:column headerText="Tipo de combustible">
                         <p:outputLabel value="#{car.tipoCombustible}"/>
                     </p:column>
+                    <p:column headerText="opcion">
+                        <p:commandButton id="btnEditar" value="Editar"
+                                         actionListener="#{autoFormBean.seleccionar(car)}"
+                                         update=":frmCargaAuto"
+                                         oncomplete="PF('dmodificar').show();"/>
+                    </p:column>
+                    
                 </p:dataTable>
             </h:form>
 
-            <h:form>
-                <h:panelGrid columns="3">
-
-                    <p:outputLabel value="Seleccionar patente para modificar"/>    
-                    <p:selectOneMenu id="patente" value="#{autoFormBean.modificar}">
-                        <f:selectItem itemLabel="AB012AA" itemValue="AB012AA"/>
-                        <f:selectItem itemLabel="AB012AB" itemValue="AB012AB"/>
-                        <f:selectItem itemLabel="AB012AC" itemValue="AB012AC"/>
-                        <f:selectItem itemLabel="AB012AD" itemValue="AB012AD"/>
-                        <f:selectItem itemLabel="AB012AE" itemValue="AB012AE"/>
-                    </p:selectOneMenu>
-                    <p:commandButton value="Modificar" type="button" onclick="PF('dmodificar').show();"
-                                     update="patente"/>
-                </h:panelGrid> 
-            </h:form>
-
+           
             
 
             
@@ -61,22 +48,19 @@
             <p:dialog header="Registro Auto" widgetVar="dmodificar" modal="true" height="200">
                 <h:form id="frmModificar">
                     <h:panelGrid  columns="2">
-                        <h:outputText value="Patente" />  
-                        <h:inputText id="txtPatente" value="#{autoFormBean.auto.patente}"/>
+                        <h:outputText value="Patente" />
+                        <h:inputText id="txtPatente" value="#{autoFormBean.autoEditar.patente}"/>
                         <h:outputText value="Modelo" />  
-                        <h:inputText id="txtModelo" value="#{autoFormBean.auto.modelo}"/>
+                        <h:inputText id="txtModelo" value="#{autoFormBean.autoEditar.modelo}"/>
                         <h:outputText value="Marca" />  
-                        <h:inputText id="txtMarca" value="#{autoFormBean.auto.marca}"/>
+                        <h:inputText id="txtMarca" value="#{autoFormBean.autoEditar.marca}"/>
                         <h:outputText value="Color" />  
-                        <h:inputText id="txtColor" value="#{autoFormBean.auto.color}"/>
+                        <h:inputText id="txtColor" value="#{autoFormBean.autoEditar.color}"/>
                         <h:outputText value="Tipo Combustible" />  
-                        <h:inputText id="txtCombustible" value="#{autoFormBean.auto.tipoCombustible}"/>
+                        <h:inputText id="txtCombustible" value="#{autoFormBean.autoEditar.tipoCombustible}"/>
                         <p:commandButton id="btnMod" value="Aceptar" onclick="PF('dmodificar').hide();"
                                          update=":frmCargaAuto"
                                          actionListener="#{autoFormBean.modificarAuto()}"/>
-                        <h:outputText value="#{autoFormBean.modificar}" />  
-                         
-                        
                     </h:panelGrid>    
                 </h:form>
 
