@@ -47,7 +47,7 @@ public class LibroFormBean implements Serializable{
         busqueda.clear();
         if(!libros.isEmpty()){
             for (Libro l : libros) {
-                if(buscar.getBuscar()==l.getAutor()){
+                if(buscar.getBuscar().equals(l.getAutor())){
                     busqueda.add(l);
                 }
                 
