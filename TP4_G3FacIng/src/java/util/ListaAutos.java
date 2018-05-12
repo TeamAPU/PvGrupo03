@@ -26,10 +26,10 @@ public class ListaAutos implements Serializable{
     }
     
     public ListaAutos(){
-        Auto auto1 = new Auto("11asd1", "modelo1", "ax0000", "Rojo","gas");
-        Auto auto2 = new Auto("11asd2", "modelo2", "ax0000", "Rojo","gas");
-        Auto auto3 = new Auto("11asd3", "bmodelo1", "ax0000", "Rojo","gas");
-        Auto auto4 = new Auto("11asd4", "modelo2", "ax0000", "Rojo","gas");
+        Auto auto1 = new Auto("11asd1", "bbbb", "ax0000", "Rojo","gas");
+        Auto auto2 = new Auto("11asd2", "bbbb", "ax0000", "Rojo","gas");
+        Auto auto3 = new Auto("11asd3", "bbbb", "ax0000", "Rojo","gas");
+        Auto auto4 = new Auto("11asd4", "bbbb", "ax0000", "Rojo","gas");
         autos = new ArrayList<>();
         autos.add(auto4);
         autos.add(auto3);
