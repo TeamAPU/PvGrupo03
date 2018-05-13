@@ -5,19 +5,21 @@
  */
 package dominio;
 
+import java.io.Serializable;
+
 /**
  *
  * @author David
  */
-public class Numero {
-    private int numero;
+public class Numero implements Serializable{
+    private double numero;
 
-    public int getNumero() {
+    public double getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(double numero) {
         this.numero = numero;
     }
-    
+   
 }

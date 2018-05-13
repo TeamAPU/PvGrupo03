@@ -18,29 +18,78 @@ import javax.faces.bean.ViewScoped;
  * @author David
  */
 @ManagedBean
-@RequestScoped
 @ViewScoped
-public class NumeroBean {
+public class NumeroBean implements Serializable{
+    private char operacion;
     private Numero numero;
     private List<Numero> numeros;
-    private char operacion;
-
     public NumeroBean() {
-        numeros= new ArrayList<>();
+        numeros = new ArrayList<>();
         numero = new Numero();
     }
+
+    public Numero getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Numero numero) {
+        this.numero = numero;
+    }
+    
+    
     
     public void agregar(){
         numeros.add(numero);
         numero = new Numero();
     }
+    public List<Numero> getNumeros() {
+        return numeros;
+    }
+
+    public NumeroBean(List<Numero> numeros) {
+        this.numeros = numeros;
+    }
+    
+    public void setNumeros(List<Numero> numeros) {
+        this.numeros = numeros;
+    }
+    
+    
     public double resultado(){
-        double resultado = 0;
-        
+        double resultado=0;
+        Numero mayor;
+        Numero menor;
+        double suma=0;
+        if(operacion=='M'){
+           mayor = numeros.get(0);
+           for(Numero a:numeros){
+               if(mayor.getNumero() < a.getNumero()){
+                   mayor = a;
+               }
+           }
+           
+           resultado = mayor.getNumero();
+        }
+        if(operacion=='N'){
+            menor = numeros.get(0);
+            for(Numero a:numeros){
+               if(menor.getNumero() > a.getNumero()){
+                   menor = a;
+               }
+           }
+           
+           resultado = menor.getNumero();
+        }
+        if(operacion=='P'){
+            for(Numero a:numeros){
+                suma = suma + a.getNumero();
+            }
+            resultado = suma / numeros.size();
+        }
         
         return resultado;
     }
-    
+   
     public char getOperacion() {
         return operacion;
     }
@@ -49,14 +98,5 @@ public class NumeroBean {
         this.operacion = operacion;
     }
     
-    public List<Numero> getNumeros() {
-        return numeros;
-    }
-
-    public void setNumeros(List<Numero> numeros) {
-        this.numeros = numeros;
-    }
     
-    
-
 }

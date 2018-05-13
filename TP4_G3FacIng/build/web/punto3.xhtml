@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Tp4_Calculadora</title>
+    </h:head>
+    <h:body>
+        <p:panel id="panelCal" header="Calculadora">
+            <h:form id="formCal">
+                <p:panelGrid id="pgridCal" columns="2">
+                    <p:outputLabel value="Ingrese el primer numero:"/>
+                    <p:inputNumber decimalPlaces="2" 
+                                   thousandSeparator="." decimalSeparator=","
+                                   value="#{calculadorabean.numeroA}"/>
+                    <p:outputLabel value="Ingrese el segundo numero:"/>
+                    <p:inputNumber decimalPlaces="2" 
+                                   thousandSeparator="." decimalSeparator=","
+                                   value="#{calculadorabean.numeroB}"/>
+                    <p:selectOneMenu value="#{calculadorabean.operador}">
+                        <f:selectItem itemLabel="Sumar" itemValue="S"/>
+                        <f:selectItem itemLabel="Restar" itemValue="R"/>
+                        <f:selectItem itemLabel="Multiplicar" itemValue="M"/>
+                        <f:selectItem itemLabel="Dividir" itemValue="D"/>
+                    </p:selectOneMenu>
+            <p:commandButton value="Calcular" update="resultado"/>
+            <p:outputLabel id="lblResultado" value="El resultado es"/>
+            <p:outputLabel id="resultado" value=" #{calculadorabean.operacion()}"/>
+                </p:panelGrid>
+            </h:form>
+        </p:panel>
+    </h:body>
+          
+</html>
+
